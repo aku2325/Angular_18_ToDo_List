@@ -1,0 +1,457 @@
+/* Abstract transparent background for the body */
+body {
+    background: linear-gradient(135deg, #ff9966, #ff5e62, #ff7e5f, #feb47b),
+        url('../../assets/2.webp') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    /* Beautiful font */
+    position: relative;
+    /* Ensure the pseudo-element can be positioned */
+    overflow: hidden;
+    /* Prevent scrollbars due to pseudo-element */
+}
+
+/* Pseudo-element for blur effect */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    /* Inherit the background from the body */
+    filter: blur(5px);
+    /* Apply blur effect */
+    z-index: -1;
+    /* Place behind content */
+}
+
+
+/* Main container using color palette */
+.container {
+    width: 90%;
+    max-width: 600px;
+    /* Increased max-width for larger screens */
+    margin: 1rem auto;
+    /* Reduced margin for compactness */
+    padding: 1rem;
+    /* Reduced padding */
+    border-radius: 15px;
+    background: rgba(241, 236, 214, 0.7);
+    /* Transparent beige background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Reduced shadow for compact look */
+    border: 1px solid rgba(124, 147, 195, 0.5);
+    /* Light blue border */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #1E2A5E;
+    /* Dark blue text color */
+    text-align: center;
+}
+
+/* Smooth gradient background animation */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Container for liquid fill effect */
+h1.text-center {
+    position: relative;
+    font-size: 3rem;
+    /* Increased font size */
+    font-weight: bold;
+    color: #1E2A5E;
+    /* Dark blue text color */
+    margin-bottom: 1rem;
+    /* Reduced margin for compactness */
+    text-transform: uppercase;
+    overflow: hidden;
+    /* Ensure liquid effect stays within bounds */
+}
+
+/* Liquid fill effect */
+h1.text-center::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 0, 150, 0.6), rgba(0, 255, 255, 0.6));
+    transform: translateY(100%);
+    animation: liquidFill 3s ease-in-out infinite;
+    z-index: 1;
+}
+
+/* Overlay text to ensure readability */
+h1.text-center span {
+    position: relative;
+    z-index: 2;
+    color: #1E2A5E;
+    /* Dark blue text color */
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.6),
+        0 0 12px rgba(255, 0, 150, 0.4),
+        0 0 18px rgba(0, 255, 255, 0.3),
+        0 0 24px rgba(0, 255, 0, 0.2);
+    animation: float 3s ease-in-out infinite, shadowPulse 2s ease-in-out infinite;
+}
+
+/* Liquid fill animation */
+@keyframes liquidFill {
+    0% {
+        transform: translateY(100%);
+    }
+
+    50% {
+        transform: translateY(0%);
+    }
+
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+/* Floating animation */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Bounce and rotate animation */
+@keyframes bounceRotate {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    20% {
+        transform: translateY(-20px) rotate(0deg);
+    }
+
+    40% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    60% {
+        transform: translateY(-10px) rotate(10deg);
+    }
+
+    80% {
+        transform: translateY(0) rotate(-10deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+/* Apply bounce and rotate animation on hover */
+h1.text-center:hover span {
+    animation: bounceRotate 2s ease-in-out infinite;
+}
+
+/* Shadow pulse animation */
+@keyframes shadowPulse {
+    0% {
+        text-shadow: 0 0 6px rgba(255, 255, 255, 0.6),
+            0 0 12px rgba(255, 0, 150, 0.4),
+            0 0 18px rgba(0, 255, 255, 0.3),
+            0 0 24px rgba(0, 255, 0, 0.2);
+    }
+
+    50% {
+        text-shadow: 0 0 12px rgba(255, 255, 255, 0.8),
+            0 0 24px rgba(255, 0, 150, 0.6),
+            0 0 36px rgba(0, 255, 255, 0.4),
+            0 0 48px rgba(0, 255, 0, 0.3);
+    }
+
+    100% {
+        text-shadow: 0 0 6px rgba(255, 255, 255, 0.6),
+            0 0 12px rgba(255, 0, 150, 0.4),
+            0 0 18px rgba(0, 255, 255, 0.3),
+            0 0 24px rgba(0, 255, 0, 0.2);
+    }
+}
+
+
+/* Form container */
+form {
+    max-width: 100%;
+    padding: 0;
+    /* No extra padding */
+    margin: 1rem auto;
+    /* Reduced margin */
+}
+
+/* Input group styling */
+.input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    /* Reduced bottom margin */
+}
+
+/* Input field styles */
+.input-group .form-control {
+    border-radius: 12px;
+    padding: 8px;
+    /* Reduced padding */
+    font-size: 0.9rem;
+    /* Smaller font size for compactness */
+    border: 2px solid #55679C;
+    /* Dark blue border */
+    box-shadow: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    margin-right: 0.5rem;
+    /* Reduced margin */
+}
+
+/* Input field focus effect */
+.input-group .form-control:focus {
+    border-color: #7C93C3;
+    /* Light blue focus border */
+    box-shadow: 0 2px 4px rgba(124, 147, 195, 0.2);
+    outline: none;
+}
+
+/* Button styling */
+.input-group .btn {
+    border-radius: 12px;
+    padding: 8px 16px;
+    /* Reduced padding */
+    font-size: 0.9rem;
+    /* Smaller font size */
+    background-color: #7C93C3;
+    /* Light blue background */
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Button hover effect */
+.input-group .btn:hover {
+    background-color: #55679C;
+    /* Darker blue on hover */
+    transform: scale(1.03);
+    /* Slightly reduced scale */
+}
+
+/* Button focus effect */
+.input-group .btn:focus {
+    background-color: #55679C;
+    /* Darker blue focus background */
+    box-shadow: 0 2px 4px rgba(85, 103, 156, 0.3);
+    outline: none;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 576px) {
+    .input-group {
+        flex-direction: column;
+    }
+
+    .input-group .form-control {
+        margin-bottom: 0.5rem;
+        /* Reduced margin */
+        margin-right: 0;
+    }
+
+    .input-group .btn {
+        width: 100%;
+    }
+}
+
+/* List group container */
+.list-group {
+    width: 100%;
+    padding: 0;
+    /* No extra padding */
+    margin: 1rem auto;
+    /* Reduced margin */
+}
+
+/* List group item */
+.list-group-item {
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Reduced shadow */
+    transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+    padding: 12px;
+    /* Reduced padding */
+    margin-bottom: 8px;
+    /* Reduced margin */
+    background-color: rgba(86, 103, 156, 0.2);
+    /* Transparent dark blue */
+    border: 1px solid rgba(30, 42, 94, 0.2);
+    /* Semi-transparent dark blue border */
+    backdrop-filter: blur(10px);
+    /* Glass effect */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+    flex-wrap: wrap;
+}
+
+/* Checked state */
+.list-group-item.checked {
+    background-color: rgba(30, 42, 94, 0.5);
+    /* Darker color when checked */
+}
+
+/* Hover effects for list group items */
+.list-group-item:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    /* Reduced shadow */
+    transform: translateY(-3px) scale(1.02);
+    /* Reduced movement and scale */
+    background-color: rgba(86, 103, 156, 0.3);
+    /* Slightly more opaque on hover */
+}
+
+/* Left section for checkbox and text */
+.list-group-item>div:first-child {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Static buttons container */
+.list-group-item>div:last-child {
+    display: flex;
+    gap: 8px;
+    /* Reduced gap */
+    flex-shrink: 0;
+}
+
+/* Checkbox styling */
+.list-group-item input[type="checkbox"] {
+    cursor: pointer;
+    margin-right: 0.5rem;
+    /* Reduced margin */
+    accent-color: #55679C;
+    /* Dark blue checkbox color */
+}
+
+/* Text styling */
+.list-group-item span {
+    font-size: 0.9rem;
+    /* Smaller font size for compactness */
+    color: #1E2A5E;
+    /* Dark color from the palette */
+    transition: color 0.3s ease;
+}
+
+/* Strikethrough text for completed items */
+.list-group-item span.text-decoration-line-through {
+    color: #6c757d;
+    /* Light gray for completed text */
+}
+
+/* Button styling */
+.list-group-item button {
+    border: none;
+    border-radius: 6px;
+    padding: 4px 8px;
+    /* Reduced padding */
+    background-color: transparent;
+}
+
+/* Info button */
+.list-group-item button.btn-info {
+    background-color: #7C93C3;
+    /* Light blue background */
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.list-group-item button.btn-info:hover {
+    background-color: #55679C;
+    /* Darker blue on hover */
+}
+
+/* Danger button */
+.list-group-item button.btn-danger {
+    background-color: #dc3545;
+    /* Danger color */
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.list-group-item button.btn-danger:hover {
+    background-color: #c82333;
+    /* Darker shade on hover */
+}
+
+/* Responsive adjustments for list group items */
+@media (max-width: 576px) {
+    .list-group-item {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .list-group-item>div:last-child {
+        margin-top: 0.5rem;
+        /* Reduced margin */
+    }
+}
+
+/* Input checkbox */
+input[type="checkbox"] {
+    margin-right: 5px;
+    /* Reduced margin */
+    transform: scale(1.2);
+}
+
+/* Responsive container adjustments */
+@media (max-width: 576px) {
+    .container {
+        max-width: 100%;
+        padding: 10px;
+        /* Reduced padding */
+    }
+
+    .input-group .form-control,
+    .input-group .btn {
+        font-size: 0.85rem;
+        /* Smaller font size */
+    }
+
+    .list-group-item {
+        padding: 8px;
+        /* Reduced padding */
+    }
+
+    .list-group-item .btn {
+        padding: 4px;
+        /* Reduced padding */
+    }
+}

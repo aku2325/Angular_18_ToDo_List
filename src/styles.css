@@ -1,0 +1,30 @@
+/* Abstract transparent background for the body */
+body {
+    background: linear-gradient(135deg, #ff9966, #ff5e62, #ff7e5f, #feb47b),
+        url('../../todo/src/assets/2.webp') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    /* Beautiful font */
+    position: relative;
+    /* Ensure the pseudo-element can be positioned */
+    overflow: hidden;
+    /* Prevent scrollbars due to pseudo-element */
+}
+
+/* Pseudo-element for blur effect */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    /* Inherit the background from the body */
+    filter: blur(5px);
+    /* Apply blur effect */
+    z-index: -1;
+    /* Place behind content */
+}
